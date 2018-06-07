@@ -1,0 +1,16 @@
+idlj -fall -oldImplBase vmitglied.idl       // die IDL-Datei heiße vmitglied.idl
+
+javac *.java Verein/*.java                  // Java-Dateien übersetzen
+
+killall tnameserv                           // Namensdienst schließen falls nötig
+
+
+taskkill /F /IM tnameserv
+
+tnameserv -ORBInitialPort 1050 &            // Namensdienst anwerfen
+
+java VereinsMitgliedServer -ORBInitialHost localhost -ORBInitialPort 1050
+                                            // Server anwerfen, Nameserver-Maschine ist z.B. lux3
+
+java VereinsMitgliedClient -ORBInitialHost localhost -ORBInitialPort 1050
+                                            // Client anwerfen, in einer eigenen Shell)
