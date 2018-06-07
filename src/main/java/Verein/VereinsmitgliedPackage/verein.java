@@ -17,10 +17,10 @@ public final class verein implements org.omg.CORBA.portable.IDLEntity
   {
   } // ctor
 
-  public verein (String _vname, short _vbeitrag)
+  public verein (String _vname, int _vbeitrag)
   {
     vname = _vname;
-    vbeitrag = _vbeitrag;
+    vbeitrag = (short) _vbeitrag;
   } // ctor
 
 } // class verein
